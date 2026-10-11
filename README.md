@@ -1,42 +1,55 @@
 # Flutter MVVM Cursor Rules Guide
 
-A concise set of Cursor Rules for Flutter MVVM architecture, repository pattern, and best practices, based on Flutter's recommended architecture.
+> [!IMPORTANT]
+> **This repository is outdated and no longer maintained.**
+> The Flutter and Dart teams now ship official AI tooling (skills, rules, MCP server and agent plugins). Use those instead:
+>
+> - **Get started developing with AI:** https://docs.flutter.dev/ai/get-started
+> - **Official Flutter agent plugins, skills and rules:** https://github.com/flutter/agent-plugins
+> - **Official Dart skills:** https://github.com/dart-lang/skills
+> - **AI rules overview:** https://docs.flutter.dev/ai/ai-rules
 
-## Use these rules
+## Recommended: official Dart & Flutter tooling
 
-- Copy `.cursor/rules/` into your Flutter project, or
-- Reference this repo directly via Cursor Remote Rules (recommended): https://cursor.com/docs/context/rules#remote-rules-via-github
-- Flutter architecture case study: https://docs.flutter.dev/app-architecture/case-study
+### Cursor
 
-## What's included
+Install the official **Dart and Flutter** plugin. It bundles the skills and configures the Dart and Flutter MCP server:
 
-- Flutter MVVM + repository architecture guidance
-- Command/Result patterns
-- UI, data/domain, and testing guidelines
+- Marketplace: https://cursor.com/marketplace/flutter (**Add to Cursor**), or
+- In a Cursor chat, run `/add-plugin dart-flutter`
 
-## Remote rules (via GitHub)
+For file-scoped rules, download the `.mdc` files from [flutter/agent-plugins/rules](https://github.com/flutter/agent-plugins/tree/main/rules) into your project's `.cursor/rules/`.
 
-Import rules directly from any GitHub repository you have access to—public or private.
+### Claude Code
 
-- Open Cursor Settings → Rules, Commands
-- Click + Add Rule next to Project Rules, then select Remote Rule (Github)
-- Paste the GitHub repository URL containing the rule
-- Cursor will pull and sync the rule into your project
+```bash
+claude plugin marketplace add flutter/agent-plugins
+claude plugin install dart-flutter@dart-flutter
+```
 
-## References
+Rules are not loaded automatically; copy the ones you want into your project's `CLAUDE.md`.
 
+### Other agents (Codex, Copilot, Antigravity, ...)
+
+Install the skills into `.agents/skills`:
+
+```bash
+npx skills add flutter/agent-plugins --skill '*' --agent universal --yes
+npx skills add dart-lang/skills --skill '*' --agent universal --yes
+```
+
+See https://docs.flutter.dev/ai/get-started for agent-specific setup, including the Dart and Flutter MCP server (`dart mcp-server`).
+
+### Architecture / MVVM
+
+The topic this repo originally covered is now handled by the official skill [`flutter-apply-architecture-best-practices`](https://github.com/flutter/agent-plugins/tree/main/skills/flutter-apply-architecture-best-practices), based on Flutter's recommended app architecture:
+
+- https://docs.flutter.dev/app-architecture
 - https://docs.flutter.dev/app-architecture/case-study
-- https://docs.flutter.dev/app-architecture/case-study/ui-layer
-- https://docs.flutter.dev/app-architecture/case-study/data-layer
-- https://docs.flutter.dev/app-architecture/case-study/dependency-injection
-- https://docs.flutter.dev/app-architecture/case-study/testing
-- https://docs.flutter.dev/app-architecture/design-patterns/command
-- https://docs.flutter.dev/app-architecture/design-patterns/result
-- https://cursor.com/docs/context/rules#remote-rules-via-github
 
-## Contributing
+## Legacy rules in this repo
 
-Improvements and extensions are welcome! Feel free to create an issue or pull request.
+The `.cursor/rules/` folder still contains the original MVVM-focused Cursor rules (architecture overview, UI layer, domain/data layer, design patterns, best practices, testing). They are kept for reference only and will not be updated.
 
 ## License
 
